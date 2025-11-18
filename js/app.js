@@ -18,7 +18,6 @@ seesaw.addEventListener('click',(e) => {
   updateSeesaw();
 
 
-
   console.log(`Yeni ağırlık:${weightValue}kg,X:${clickX}px`);
 });
 
@@ -38,7 +37,7 @@ function updateSeesaw(){
     }
   });
 
-  let angle = (rightTorque - leftTorque)/100;
+  let angle = (rightTorque - leftTorque)/10;
   angle = Math.max(-30,Math.min(30,angle));
 
   seesawElement.style.transform = `rotate(${angle}deg)`;

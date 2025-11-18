@@ -27,6 +27,7 @@ body{
     height: 20px;
     background-color: #8b4513;
     transform-origin: center bottom;
+    transition: transform 0.4s ease-out;
 }
 .pivot{
     position: absolute;

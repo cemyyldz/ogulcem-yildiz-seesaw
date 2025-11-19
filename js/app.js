@@ -2,18 +2,19 @@ const seesaw=document.querySelector('.seesaw-wrapper');
 const seesawElement=document.querySelector('.seesaw');
 let weights=[];
 seesaw.addEventListener('click',(e) => {
-  const rect=seesaw.getBoundingClientRect();
+  const rect=seesawElement.getBoundingClientRect();
   const clickX =e.clientX - rect.left;
 
   const weightValue=Math.floor(Math.random()*10)+1;
   
   const weightDiv=document.createElement('div');
-  weightDiv.classList.add('weight')
+  weightDiv.classList.add('weight');
   weightDiv.style.left=`${clickX-10}px`;
   weightDiv.style.bottom='20px';
   weightDiv.textContent=weightValue + "kg";
 
-  seesaw.appendChild(weightDiv);
+
+  seesawElement.appendChild(weightDiv);
   weights.push({x: clickX,weight:weightValue});
   localStorage.setItem("weightsData",JSON.stringify(weights));
   updateSeesaw();
@@ -65,7 +66,7 @@ function loadFromStorage(){
       weightDiv.style.left=`${obj.x-10}px`;
       weightDiv.style.bottom=`20px`;
       weightDiv.textContent=obj.weight + "kg";
-      seesaw.appendChild(weightDiv);
+      seesawElement.appendChild(weightDiv);
     });
   }
   if(savedAngle){
@@ -74,3 +75,22 @@ function loadFromStorage(){
   updateSeesaw();
 }
 loadFromStorage();
+
+document.getElementById("reset-btn").addEventListener("click",resetSeesaw);
+
+function resetSeesaw(){
+  weights=[];
+
+  localStorage.removeItem("weightsData");
+  localStorage.removeItem("currentAngle");
+
+  document.querySelectorAll(".weight").forEach(w=>w.remove());
+
+  seesawElement.style.transform ="rotate(0deg)";
+
+  document.getElementById("left-weight").textContent = "Left: 0 kg"
+  document.getElementById("right-weight").textContent = "Right: 0 kg"
+
+  console.log("Reset işlemi başarılı");
+
+}

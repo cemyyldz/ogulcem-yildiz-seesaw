@@ -49,8 +49,16 @@ body{
     justify-content: center;
     align-items: center;
     color: white;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: bold;
+    box-shadow:
+    2px 2px 5px rgba(0,0,0,0.4),
+    -2px -2px 5px rgba(255,255,255,0.15);
+    user-select: none;
+    transition: transform 0.2s ease;
+}
+.weight:hover{
+    transform: scale(1.2);
 }
 .weights-info{
     display: flex;
@@ -59,4 +67,27 @@ body{
     margin-top: 20px;
     font-size: 18px;
     font-weight: bold;
+}
+#reset-btn{
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #ff4b4b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.25s ease;
+    box-shadow: 0 4px 10px rgba(255, 75, 75, 0.3);
+}
+#reset-btn:hover{
+    background: #ff2c2c;
+    transform: scale(1.05);
+    box-shadow: 0 6px 14px rgba(255, 75, 75, 0.45);
+
+}
+
+#reset-btn:active {
+  transform: scale(0.97);
 }

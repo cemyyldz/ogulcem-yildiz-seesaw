@@ -15,6 +15,7 @@ seesaw.addEventListener('click',(e) => {
 
   seesaw.appendChild(weightDiv);
   weights.push({x: clickX,weight:weightValue});
+  localStorage.setItem("weightsData",JSON.stringify(weights));
   updateSeesaw();
 
 
@@ -45,7 +46,31 @@ function updateSeesaw(){
   angle = Math.max(-30,Math.min(30,angle));
 
   seesawElement.style.transform = `rotate(${angle}deg)`;
+  localStorage.setItem("currentAngle",angle);
 
   document.getElementById("left-weight").textContent = `Left: ${leftWeightSum} kg`;
   document.getElementById("right-weight").textContent = `Right: ${rightWeightSum} kg`;
 }
+
+function loadFromStorage(){
+  const savedWeights = localStorage.getItem("weightsData");
+  const savedAngle = localStorage.getItem("currentAngle");
+
+  if(savedWeights){
+    weights =JSON.parse(savedWeights);
+
+    weights.forEach(obj =>{
+      const weightDiv =document.createElement('div');
+      weightDiv.classList.add('weight');
+      weightDiv.style.left=`${obj.x-10}px`;
+      weightDiv.style.bottom=`20px`;
+      weightDiv.textContent=obj.weight + "kg";
+      seesaw.appendChild(weightDiv);
+    });
+  }
+  if(savedAngle){
+    seesawElement.style.transform=`rotate(${savedAngle}deg)`;
+  }
+  updateSeesaw();
+}
+loadFromStorage();

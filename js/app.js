@@ -27,12 +27,16 @@ function updateSeesaw(){
 
   let leftTorque = 0;
   let rightTorque = 0;
+  let leftWeightSum =0;
+  let rightWeightSum = 0;
 
   weights.forEach(obj => {
     const distance = obj.x - pivotX;
     if(distance<0){
+      leftWeightSum +=obj.weight;
       leftTorque += obj.weight *Math.abs(distance)
     } else {
+      rightWeightSum +=obj.weight;
       rightTorque += obj.weight *distance;
     }
   });
@@ -41,4 +45,7 @@ function updateSeesaw(){
   angle = Math.max(-30,Math.min(30,angle));
 
   seesawElement.style.transform = `rotate(${angle}deg)`;
+
+  document.getElementById("left-weight").textContent = `Left: ${leftWeightSum} kg`;
+  document.getElementById("right-weight").textContent = `Right: ${rightWeightSum} kg`;
 }

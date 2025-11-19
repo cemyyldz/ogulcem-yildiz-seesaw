@@ -1,11 +1,14 @@
 const seesaw=document.querySelector('.seesaw-wrapper');
 const seesawElement=document.querySelector('.seesaw');
 let weights=[];
+let nextWeight = Math.floor(Math.random() * 10) + 1;
+
 seesaw.addEventListener('click',(e) => {
   const rect=seesawElement.getBoundingClientRect();
   const clickX =e.clientX - rect.left;
 
-  const weightValue=Math.floor(Math.random()*10)+1;
+  const weightValue = nextWeight;
+  nextWeight = Math.floor(Math.random() * 10) + 1;
   
   const weightDiv=document.createElement('div');
   weightDiv.classList.add('weight');
@@ -17,6 +20,16 @@ seesaw.addEventListener('click',(e) => {
   seesawElement.appendChild(weightDiv);
   weights.push({x: clickX,weight:weightValue});
   localStorage.setItem("weightsData",JSON.stringify(weights));
+  
+  const seesawWidth = seesaw.offsetWidth;
+  const pivotX = seesawWidth / 2;
+  const distanceFromCenter = clickX - pivotX;
+
+  document.getElementById("last-weight").textContent = weightValue;
+  document.getElementById("last-distance").textContent = Math.abs(Math.floor(distanceFromCenter));
+  
+  
+  
   updateSeesaw();
 
 
@@ -49,8 +62,8 @@ function updateSeesaw(){
   seesawElement.style.transform = `rotate(${angle}deg)`;
   localStorage.setItem("currentAngle",angle);
 
-  document.getElementById("left-weight").textContent = `Left: ${leftWeightSum} kg`;
-  document.getElementById("right-weight").textContent = `Right: ${rightWeightSum} kg`;
+  document.getElementById("left-weight").textContent = `Left: ${leftWeightSum} kg | Sıradaki: ${nextWeight} kg`;
+  document.getElementById("right-weight").textContent = `Right: ${rightWeightSum} kg | Açı: ${angle.toFixed(1)}°`;
 }
 
 function loadFromStorage(){
@@ -87,9 +100,13 @@ function resetSeesaw(){
   document.querySelectorAll(".weight").forEach(w=>w.remove());
 
   seesawElement.style.transform ="rotate(0deg)";
+  nextWeight = Math.floor(Math.random() * 10) + 1;
 
-  document.getElementById("left-weight").textContent = "Left: 0 kg"
-  document.getElementById("right-weight").textContent = "Right: 0 kg"
+  document.getElementById("left-weight").textContent = `Left: 0 kg | Sıradaki: ${nextWeight} kg`;
+  document.getElementById("right-weight").textContent = `Right: 0 kg | Açı: 0°`;
+
+  document.getElementById("last-weight").textContent = "-";
+  document.getElementById("last-distance").textContent = "-";
 
   console.log("Reset işlemi başarılı");
 

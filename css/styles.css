@@ -7,15 +7,20 @@ body{
     height: 100vh;
     background-color: #f0f0f0;
 }
-.container{
+.container {
     position: relative;
     width: 100%;
-    height: auto;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 90px;
+    background: #f9f9f9; 
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 .seesaw-wrapper{
     position: relative;
@@ -63,14 +68,18 @@ body{
 .weight:hover{
     transform: scale(1.2);
 }
-.weights-info{
+.weights-info {
     display: flex;
     justify-content: center;
-    text-align: center;
-    gap: 30px;
-    margin-top: 20px;
+    align-items: center;
+    gap: 40px;
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 700;
+    padding: 12px 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    color: #333;
 }
 #reset-btn{
     margin-top: 20px;
@@ -105,4 +114,32 @@ body{
     font-size: 16px;
     text-align: center;
     font-weight: 600;
+}
+.history-item {
+  margin-top: 5px;
+  padding: 5px 8px;
+  background: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  font-size: 14px;
+}
+#history-list {
+    max-height: 150px;   
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;      
+    margin-top: 10px;
+    padding: 8px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+#history-list div {
+    padding: 6px;
+    margin-bottom: 6px;
+    background: #f7f7f7;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
 }

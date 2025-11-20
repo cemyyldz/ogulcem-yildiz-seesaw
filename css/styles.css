@@ -36,8 +36,9 @@ body{
     background: linear-gradient(145deg, #8b4513, #a0522d);
     border-radius: 10px;
     transform-origin: center bottom;
-    transition: transform 0.4s ease-out;
+    transition: transform 1s ease-out;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    cursor: pointer;
 }
 .pivot{
     position: absolute;

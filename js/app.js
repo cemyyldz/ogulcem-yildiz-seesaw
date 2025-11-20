@@ -155,7 +155,7 @@ function resetSeesaw() {
   nextWeight = Math.floor(Math.random() * 10) + 1;
 
   document.getElementById("left-weight").textContent = `Sol: 0 kg | Sıradaki: ${nextWeight} kg`;
-  document.getElementById("right-weight").textContent = `Açı: 0 kg | Açı: 0°`;
+  document.getElementById("right-weight").textContent = `Sağ: 0 kg | Açı: 0°`;
 
   document.getElementById("last-weight").textContent = "-";
   document.getElementById("last-distance").textContent = "-";

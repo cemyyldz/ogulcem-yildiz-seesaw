@@ -22,9 +22,12 @@ seesaw.addEventListener('click', (e) => {
   weightDiv.style.bottom = '20px';
   weightDiv.textContent = weightValue + "kg";
 
+  const randomColor = `hsl(${Math.floor(Math.random() * 360)}, 70%, 55%)`;
+  weightDiv.style.background = `linear-gradient(145deg, ${randomColor}, ${randomColor})`;
+
 
   seesawElement.appendChild(weightDiv);
-  weights.push({ x: clickX, weight: weightValue });
+  weights.push({ x: clickX, weight: weightValue, color: randomColor });
   localStorage.setItem("weightsData", JSON.stringify(weights));
 
 
@@ -103,6 +106,7 @@ function loadFromStorage() {
       weightDiv.style.left = `${obj.x - 10}px`;
       weightDiv.style.bottom = `20px`;
       weightDiv.textContent = obj.weight + "kg";
+      weightDiv.style.background = `linear-gradient(145deg, ${obj.color}, ${obj.color})`;
       seesawElement.appendChild(weightDiv);
     });
   }
@@ -120,6 +124,7 @@ function loadFromStorage() {
         div.textContent = `Eklenen ağırlık: ${item.weight} kg | Merkeze uzaklık: ${item.distance} px`;
         historyList.appendChild(div);
       });
+      historyList.scrollTop = historyList.scrollHeight;
     }
   }
 

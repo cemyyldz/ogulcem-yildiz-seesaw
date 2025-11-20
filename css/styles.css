@@ -18,7 +18,7 @@ body{
     justify-content: center;
     align-items: center;
     gap: 90px;
-    background: #f9f9f9; 
+    background: linear-gradient(135deg, #ffe066, #ff6b6b);
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
@@ -33,9 +33,11 @@ body{
     left: 0;
     width: 100%;
     height: 20px;
-    background-color: #8b4513;
+    background: linear-gradient(145deg, #8b4513, #a0522d);
+    border-radius: 10px;
     transform-origin: center bottom;
     transition: transform 0.4s ease-out;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 .pivot{
     position: absolute;
@@ -44,8 +46,10 @@ body{
     transform: translateX(-50%);
     width: 20px;
     height: 20px;
-    background-color: #555;
+    background: radial-gradient(circle at 30% 30%, #777, #333);
     border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    border: 2px solid #999;
 }
 .weight{
     position: absolute;
@@ -76,13 +80,17 @@ body{
     font-size: 18px;
     font-weight: 700;
     padding: 12px 20px;
-    background-color: #ffffff;
+    background: linear-gradient(145deg, #ffdde1, #ee9ca7);
     border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    color: #333;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.05);
+    color: #222;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.weights-info:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.06);
 }
 #reset-btn{
-    margin-top: 20px;
     padding: 10px 20px;
     background: #ff4b4b;
     color: white;
@@ -107,13 +115,17 @@ body{
 
 .weight-detail-box{
     margin-top: 15px;
-    padding: 10px 15px;
-    background: #f3f3f3;
-    border-radius: 10px;
+    padding: 15px 20px;
+    background: linear-gradient(135deg, #e0c3fc, #8ec5fc);
+    border-radius: 14px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     font-size: 16px;
     text-align: center;
     font-weight: 600;
+}
+.weight-detail-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.06);
 }
 .history-item {
   margin-top: 5px;
@@ -122,17 +134,24 @@ body{
   border-radius: 6px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   font-size: 14px;
+  font-weight: 500;
+  color: #333;
 }
 #history-list {
-    max-height: 150px;   
+    height: 150px;   
     overflow-y: auto;
     display: flex;
     flex-direction: column;      
     margin-top: 10px;
-    padding: 8px;
-    background: #ffffff;
-    border-radius: 8px;
+    padding: 10px;
+    background: linear-gradient(135deg, #fdfbfb, #ebedfa);
+    border-radius: 12px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+#history-list:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.06);
 }
 
 #history-list div {

@@ -3,6 +3,7 @@ const seesawElement = document.querySelector('.seesaw');
 let weights = [];
 let nextWeight = Math.floor(Math.random() * 10) + 1;
 let history = [];
+const dropSound = new Audio('assets/sounds/drop.mp3');
 
 seesaw.addEventListener('click', (e) => {
   const rect = seesawElement.getBoundingClientRect();
@@ -24,6 +25,7 @@ seesaw.addEventListener('click', (e) => {
 
   const randomColor = `hsl(${Math.floor(Math.random() * 360)}, 70%, 55%)`;
   weightDiv.style.background = `linear-gradient(145deg, ${randomColor}, ${randomColor})`;
+  weightDiv.setAttribute('data-weight', weightValue + ' kg');
 
 
   seesawElement.appendChild(weightDiv);
@@ -51,6 +53,8 @@ seesaw.addEventListener('click', (e) => {
   document.getElementById("last-weight").textContent = weightValue;
   document.getElementById("last-distance").textContent = absDistance;
 
+  dropSound.currentTime = 0;
+  dropSound.play();
 
 
 
@@ -132,6 +136,7 @@ function loadFromStorage() {
   updateSeesaw();
 }
 loadFromStorage();
+
 
 document.getElementById("reset-btn").addEventListener("click", resetSeesaw);
 
